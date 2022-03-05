@@ -1,6 +1,7 @@
 import React from 'react';
 
 import classes from './MealItem.module.sass';
+import MealItemForm from './MealItemForm';
 
 const MealItem = ({ name, description, price }) => {
   const itemPrice = `$${price.toFixed(2)}`;
@@ -11,7 +12,9 @@ const MealItem = ({ name, description, price }) => {
         <div className={classes.description}>{description}</div>
         <div className={classes.price}>{itemPrice}</div>
       </div>
-      <div></div>
+      <div>
+        <MealItemForm />
+      </div>
     </li>
   );
 };
