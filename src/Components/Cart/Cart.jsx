@@ -3,7 +3,7 @@ import React from 'react';
 import classes from './Cart.module.sass';
 import Modal from '../UI/Modal';
 
-const Cart = () => {
+const Cart = ({ onCloseCart }) => {
   const cartItems = (
     <ul className={classes['cart-items']}>
       {[{ id: 'c1', name: 'Sushi', amount: 2, price: 12.99 }].map((cartItem) => (
@@ -12,14 +12,14 @@ const Cart = () => {
     </ul>
   );
   return (
-    <Modal>
+    <Modal onClose={onCloseCart}>
       {cartItems}
       <div className={classes.total}>
         <span>TotalAmount:</span>
         <span>35.62</span>
       </div>
       <div className={classes.actions}>
-        <button className={classes['button--alt']} type="button">
+        <button onClick={onCloseCart} className={classes['button--alt']} type="button">
           Close
         </button>
         <button className={classes.button} type="button">
