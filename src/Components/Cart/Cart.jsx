@@ -13,14 +13,14 @@ const Cart = ({ onCloseCart }) => {
   const cartItemRemoveHandler = id => {};
   const cartItems = (
     <ul className={classes['cart-items']}>
-      {context.items.map((cartItem) => (
+      {context.items.map(cartItem => (
         <CartItem
           key={cartItem.id}
           name={cartItem.name}
           amount={cartItem.amount}
           price={cartItem.price}
-          onAdd={cartItemAddHandler}
-          onRemove={cartItemRemoveHandler}
+          onAdd={() => cartItemAddHandler(cartItem)}
+          onRemove={() => cartItemRemoveHandler(cartItem.id)}
         />
       ))}
     </ul>
