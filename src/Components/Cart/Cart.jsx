@@ -1,15 +1,17 @@
 import React, { useContext } from 'react';
+import { isEmpty } from 'lodash';
 import classes from './Cart.module.sass';
 import Modal from '../UI/Modal';
 import cartContext from '../../store/CartContext';
-import {isEmpty} from "lodash";
-import CartItem from "./CartItem";
+import CartItem from './CartItem';
 
 const Cart = ({ onCloseCart }) => {
   const context = useContext(cartContext);
   const totalAmount = `$${context.totalAmount.toFixed(2)}`;
   const hasItems = !isEmpty(context.items);
-  const cartItemAddHandler = item => {};
+  const cartItemAddHandler = item => {
+    context.addItem({ ...item, amount: 1 });
+  };
   const cartItemRemoveHandler = id => {};
   const cartItems = (
     <ul className={classes['cart-items']}>
