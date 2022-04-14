@@ -12,7 +12,9 @@ const Cart = ({ onCloseCart }) => {
   const cartItemAddHandler = item => {
     context.addItem({ ...item, amount: 1 });
   };
-  const cartItemRemoveHandler = id => {};
+  const cartItemRemoveHandler = id => {
+    context.removeItem(id);
+  };
   const cartItems = (
     <ul className={classes['cart-items']}>
       {context.items.map(cartItem => (
