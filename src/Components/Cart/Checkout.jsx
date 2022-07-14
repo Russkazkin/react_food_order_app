@@ -1,30 +1,37 @@
 import React from 'react';
 import classes from './Checkout.module.sass';
 
-const Checkout = ({ onCancel }) => {
+const Checkout = props => {
   const confirmHandler = event => {
     event.preventDefault();
   };
+
   return (
-    <form>
+    <form className={classes.form} onSubmit={confirmHandler}>
       <div className={classes.control}>
         <label htmlFor="name">Your Name</label>
-        <input id="name" name="name" type="text" />
+        <input type="text" id="name" />
       </div>
       <div className={classes.control}>
         <label htmlFor="street">Street</label>
-        <input id="street" name="street" type="text" />
+        <input type="text" id="street" />
       </div>
       <div className={classes.control}>
         <label htmlFor="postal">Postal Code</label>
-        <input id="postal" name="postal" type="text" />
+        <input type="text" id="postal" />
       </div>
       <div className={classes.control}>
         <label htmlFor="city">City</label>
-        <input id="city" name="city" type="text" />
+        <input type="text" id="city" />
       </div>
-      <button onClick={onCancel} type="button">Cancel</button>
-      <button onClick={confirmHandler} type="submit">Confirm</button>
+      <div className={classes.actions}>
+        <button type="button" onClick={props.onCancel}>
+          Cancel
+        </button>
+        <button type="submit" className={classes.submit}>
+          Confirm
+        </button>
+      </div>
     </form>
   );
 };
